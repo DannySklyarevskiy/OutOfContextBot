@@ -37,13 +37,13 @@ async def on_ready():
 @bot.event
 async def on_message(message):
     # CHECKS IF THE MESSAGE THAT WAS SENT MATCHES STARTING COMMAND.
-	if message.content.startswith('test'):
+	if message.content == ('quote this'):
 		# GETS ALL MESSAGE DATA
 		channel = message.channel
-		msg = await channel.fetch_message(message.id)
+		msg = await channel.fetch_message(message.reference.message_id)
 
 		# SET OF VARIABLES NEEDED TO SHOW RESPONSE
-		content = message.content
+		content = msg.content
 		contentHex = content.encode().hex()
 		time = str(msg.created_at)[:10]
 		user = msg.author.id
